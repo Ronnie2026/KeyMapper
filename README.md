@@ -1,76 +1,31 @@
-![GitHub release](https://img.shields.io/github/release/keymapperorg/KeyMapper.svg)
-![fdroid release](https://img.shields.io/f-droid/v/io.github.sds100.keymapper.svg)
+# Key Mapper 简体中文开发分支
 
-<p align="center">
-  <img width="200" height="auto" src="https://github.com/sds100/KeyMapper/blob/master/app/src/main/ic_launcher-web.png">
-  <br/>
-  
-</b>
-</p>
+本仓库是 [keymapperorg/KeyMapper](https://github.com/keymapperorg/KeyMapper) 的独立 Fork，保留上游 GPL-3.0 许可证。原版介绍见 [README.upstream.md](README.upstream.md)。
 
-<p align="center">
-<a href="https://trendshift.io/repositories/13504?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-13504" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/13504" alt="keymapperorg%2FKeyMapper | Trendshift" width="250" height="55"/></a>
-</p>
+## 开发目标
 
-<p align="center">
-<a href='https://play.google.com/store/apps/details?id=io.github.sds100.keymapper&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height='75px'/></a>
-<a href="https://f-droid.org/packages/io.github.sds100.keymapper/" rel="nofollow"><img alt="Get it on F-Droid" height="75" src="https://user-images.githubusercontent.com/53379023/142497343-0e635fc5-056b-46ff-8d8e-d607ed95527e.png" data-canonical-src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" style="max-width: 100%;"></a>
-  </br>
-<a href='https://ko-fi.com/M4M41032E' target='_blank'><img height='50' style='border:0px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-</p>
+为自定义蓝牙键盘提供易懂的按键映射：按一次打开 DiPlay、豆包或其他安卓应用，支持短按、长按和多个动作。重点验证无密码专用手机上“熄屏收键 → 唤醒 → 收起锁屏 → 启动应用”的完整流程。上述实机链路尚待本分支验证，不能当作兼容性承诺。
 
-## Unleash your keys!
+## 简体中文界面
 
-Make custom macros on your keyboard or gamepad, make on-screen buttons in any app, and unlock new functionality from your volume buttons!
+上游已包含 `base/src/main/res/values-zh-rCN/strings.xml`，无需从头翻译。手机系统语言设置为简体中文时，应用会使用已有中文资源；未翻译的新条目可能回退到英文。专家模式、熄屏触发与启动应用等已有中文说明。
 
-Key Mapper supports a huge variety of buttons and keys:
+首次使用：启用 Key Mapper 无障碍服务；需要熄屏收键时，启用专家模式，并在专家模式下重新录入蓝牙键盘按键。root 授权可以简化专家模式启动。先配置“启动应用”动作，再单独验证熄屏与无密码锁屏行为。
 
-- ALL your phone buttons (volume AND side key)
-- Game controllers (D-pad, ABXY, and most others)
-- Keyboards
-- Mouse buttons
-- Headsets and headphones
-- Fingerprint sensor
+## 分支与源码
 
-Most devices are already supported, with new devices being added over time. Let us know if it's not working for you and we can prioritize your device.
+- `develop`：保留上游开发基线，便于同步。
+- `codex/zh-cn`：中文说明与后续本地化开发。
+- 上游远程：`upstream`；自己的仓库：`origin`。
 
-Not currently supported:
- - Joysticks and triggers (LT,RT) on gamepads
+```powershell
+git clone -b codex/zh-cn https://github.com/Ronnie2026/KeyMapper.git
+cd KeyMapper
+.\gradlew.bat assembleDebug
+```
 
-Not enough keys? Design your own on-screen button layouts and remap those just like real keys!
+构建依赖以 Gradle 配置为准，包含 Android SDK、JDK、NDK 和 Rust 原生模块。当前开发基线要求 compileSdk 37，不可直接沿用旧三键项目的 API 30 构建脚本。详细规范见 CLAUDE.md；此分支暂未构建自定义 APK。
 
-## What shortcuts can I make?
+## 安装与签名
 
-With over 100 individual actions, the sky is the limit.
-
-Build complex macros with screen taps and gestures, keyboard inputs, open apps, control media, and even send intents directly to other apps.
-
-
-## How much control do I have?
-
-TRIGGERS: You decide how to trigger a key map. Long press, double press, press as many times as you like! Combine keys on different devices, and even include your on-screen buttons.
-
-ACTIONS: Design specific macros for what you want to do. Combine over 100 actions, and choose the delay between each one. Set repeating actions to automate and speed up slow tasks.
-
-CONSTRAINTS: You choose when key maps should run and when they shouldn't. Only need it in one specific app? Or when media is playing? On your lockscreen? Constrain your key maps for maximum control.
-
-
-## Links
-
-Come say hi in our [Discord community!](http://keymapper.app/discord)
-
-Read the [documentation!](https://keymapper.app/?utm_source=github)
-
-## Translations
-
-[![cs proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=cs&style=flat&logo=crowdin&query=%24.progress.1.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-[![es-ES proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=es-ES&style=flat&logo=crowdin&query=%24.progress.3.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-[![pl proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=pl&style=flat&logo=crowdin&query=%24.progress.8.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-[![pt-BR proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=pt-BR&style=flat&logo=crowdin&query=%24.progress.9.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-[![ru proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=ru&style=flat&logo=crowdin&query=%24.progress.10.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-[![sk proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=sk&style=flat&logo=crowdin&query=%24.progress.11.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-[![zh-CN proofreading](https://img.shields.io/badge/dynamic/json?color=green&label=zh-CN&style=flat&logo=crowdin&query=%24.progress.15.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-13864667-360045-update.json)](https://crowdin.com/project/key-mapper)
-
-## Contributing
-There are many ways to help with this project. 😃
-Check out the contributing guide in the [documentation.](https://keymapper.app/contributing/introduction/?utm_source=github)
+Fork 不会自动复制上游 Release。体验版本请使用 [上游官方 Release](https://github.com/keymapperorg/KeyMapper/releases)。本分支自编译 APK 与上游签名不同，不能保证覆盖官方版；调试版本使用独立的 `.debug` 包名。此前 `android-ble-key-mapper` 是独立项目，不会被此 Fork 替换。
